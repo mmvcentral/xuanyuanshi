@@ -1,0 +1,1487 @@
+;-----------------------------------------------------------------------------
+[Statedef -3];
+;======================================================================================
+;-------------------------
+;State detection
+[State 0, VarSet]
+type = VarSet
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+triggerall = sysvar(2) > 215
+triggerall = fvar(14)
+triggerall = !fvar(1)
+trigger1 = stateno = [10,12]
+trigger2 = stateno = 20
+trigger3 = stateno = [45,52]
+trigger4 = stateno = [100,101]
+fv = 1
+value = 1
+
+[State 0, VarSet]
+type = VarSet
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+triggerall = fvar(14)
+triggerall = fvar(1)
+triggerall = time = [0,1]
+trigger1 = stateno != 0
+trigger1 = stateno != [10,12]
+trigger1 = stateno != 20
+trigger1 = stateno != [45,52]
+trigger1 = stateno != [100,101]
+trigger1 = stateno != 99161
+trigger1 = stateno != 99111
+trigger1 = sysvar(2) > 215
+fv = 1
+value = 0
+
+;-------------------------
+;Opening control state control
+[state -1]
+type = varset
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+trigger1 = fvar(14) = 1
+trigger1 = stateno = 0
+trigger1 = fvar(1) = 1
+trigger1 = sysvar(2) < 215
+fvar(1) = 0
+
+[state -1]
+type = varset
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+trigger1 = fvar(14) = 1
+trigger1 = stateno = 0
+trigger1 = fvar(1) = 0
+trigger1 = sysvar(2) = 215
+fvar(1) = 1
+
+[state -1]
+type = ctrlset
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+trigger1 = fvar(14) = 0
+trigger1 = stateno = 0
+trigger1 = ctrl = 1
+trigger1 = sysvar(2) < 215
+value = 0
+
+[state -1]
+type = ctrlset
+triggerall = !ishelper
+triggerall = fvar(11)!=0
+trigger1 = fvar(14) = 0
+trigger1 = stateno = 0
+trigger1 = ctrl = 0
+trigger1 = sysvar(2) = 215
+value = 1
+;-----------------------------------------------------------------
+[State 0, VelSet]
+type = VelSet
+triggerall = !ishelper
+triggerall = facing =1
+trigger1 = PrevStateNo = 99111
+trigger1 = pos y < 0
+x = (Partner,fvar(18) - pos x)/15
+
+[State 0, VelSet]
+type = VelSet
+triggerall = !ishelper
+triggerall = facing =-1
+trigger1 = PrevStateNo = 99111
+trigger1 = pos y < 0
+x = (pos x - Partner,fvar(18))/15
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !ishelper
+triggerall = RoundState = 2
+triggerall = fvar(11)
+triggerall = life <= 0
+triggerall = !Alive
+trigger1 = StateNo = 5110
+value = 99070
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !ishelper
+triggerall = RoundState = 3
+triggerall = lose
+triggerall = fvar(11)
+triggerall = life <= 0
+triggerall = !Alive
+trigger1 = PrevStateNo = 99012
+value = 99072
+ctrl = 0
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = StateNo = [170,199]
+trigger1 = win || lose || drawgame
+trigger1 = pos y != 0
+value = 0
+
+[state -2]
+type = varset
+triggerall = !ishelper
+trigger1 = fvar(8) != 0
+trigger1 = stateno !=[40,100]
+fvar(8) = 0
+
+[state -2]
+type = varset
+triggerall = !ishelper
+trigger1 = partner,stateno = 99051
+fvar(19) = partner,vel x
+
+[State -3, ]
+type = ChangeState
+triggerall = !ishelper
+triggerall = NumPartner
+triggerall = RoundState > 2
+triggerall = win || lose || drawgame
+triggerall = pos y > 500
+trigger1 = PrevStateNo = 180
+trigger2 = PrevStateNo = 99060
+trigger3 = StateNo = [180,189]
+trigger4 = PrevStateNo = 170
+trigger3 = StateNo = [170,179]
+value = 99061
+
+;===========================================
+;??�????????????
+[state -3,varset]
+type = varset
+trigger1 = movehit
+trigger1 = HitPauseTime
+var(52) = gethitvar(damage)
+
+[state -3,varset]
+type = null;varset
+trigger1 = !movehit
+var(52) = 0
+
+
+
+;-----------------------------------------------------------------------------
+[State -2,12]
+type = VarSet
+triggerall = !ishelper
+triggerall = fvar(11)
+triggerall = var(59) = 0
+triggerall = var(57) = [0,11]
+triggerall = NumPartner
+triggerall = movetype !=H
+triggerall = id<partner, id
+trigger1 = command = "CPU_1"
+trigger2 = command = "CPU_2"
+trigger3 = command = "CPU_3"
+trigger4 = command = "CPU_4"
+trigger5 = command = "CPU_5"
+trigger6 = command = "CPU_6"
+trigger7 = command = "CPU_7"
+trigger8 = command = "CPU_8"
+trigger9 = command = "CPU_9"
+trigger10 = command = "CPU_10"
+trigger11 = command = "CPU_11"
+trigger12 = command = "CPU_12"
+trigger13 = command = "CPU_13"
+trigger14 = command = "CPU_14"
+trigger15 = command = "CPU_15"
+trigger16 = command = "CPU_16"
+trigger17 = command = "CPU_17"
+trigger18 = command = "CPU_18"
+trigger19 = command = "CPU_19"
+trigger20 = command = "CPU_20"
+trigger21 = command = "CPU_21"
+trigger22 = command = "CPU_22"
+trigger23 = command = "CPU_23"
+trigger24 = command = "CPU_24"
+trigger25 = command = "CPU_25"
+trigger26 = command = "CPU_26"
+trigger27 = command = "CPU_27"
+trigger28 = command = "CPU_28"
+trigger29 = command = "CPU_29"
+trigger30 = command = "CPU_30"
+persistent = 1
+v = 59
+value = 1
+
+[State -2,12]
+type = VarSet
+triggerall = !ishelper
+triggerall = !fvar(11)
+triggerall = var(59) = 0
+triggerall = var(57) = [0,11]
+triggerall = !NumPartner
+triggerall = movetype !=H
+trigger1 = command = "CPU_1"
+trigger2 = command = "CPU_2"
+trigger3 = command = "CPU_3"
+trigger4 = command = "CPU_4"
+trigger5 = command = "CPU_5"
+trigger6 = command = "CPU_6"
+trigger7 = command = "CPU_7"
+trigger8 = command = "CPU_8"
+trigger9 = command = "CPU_9"
+trigger10 = command = "CPU_10"
+trigger11 = command = "CPU_11"
+trigger12 = command = "CPU_12"
+trigger13 = command = "CPU_13"
+trigger14 = command = "CPU_14"
+trigger15 = command = "CPU_15"
+trigger16 = command = "CPU_16"
+trigger17 = command = "CPU_17"
+trigger18 = command = "CPU_18"
+trigger19 = command = "CPU_19"
+trigger20 = command = "CPU_20"
+trigger21 = command = "CPU_21"
+trigger22 = command = "CPU_22"
+trigger23 = command = "CPU_23"
+trigger24 = command = "CPU_24"
+trigger25 = command = "CPU_25"
+trigger26 = command = "CPU_26"
+trigger27 = command = "CPU_27"
+trigger28 = command = "CPU_28"
+trigger29 = command = "CPU_29"
+trigger30 = command = "CPU_30"
+persistent = 1
+v = 59
+value = 1
+
+[State -2,12]
+type = VarSet
+trigger1 = var(57) = 12
+trigger1 = var(59) != 0
+var(59) = 0
+
+[State -2, 1]
+type = null;helper
+triggerall = var(57) = [0,11]
+triggerall = roundstate = 1
+triggerall = !NumHelper(99991)
+;triggerall = ID < Partner,ID
+trigger1 = !fvar(15)
+trigger1 = !var(59)
+trigger1 = !fvar(13)
+helpertype = Normal
+name = "AI"
+id = 99991
+pos = 10000,-10000
+postype = p1
+facing = 0
+stateno = 99991
+keyctrl = 1
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+;==================================================================
+[State -2,test]
+type = DisplayToClipboard
+trigger1 = 1
+text = "GetHitVar(groundtype) = %d :helperfvar(1) = %f : prevstateno = %d  :helpervar(40) = %d : p2bodydist x = %f"
+params = GetHitVar(groundtype),(helper(820),fvar(1)),prevstateno,(helper(820),var(40)), p2bodydist x
+;====================================================================================
+;sc dc??????
+;====================================================================================
+
+[State 3200, 8]
+type = Helper
+triggerall = stateno = [3000,4999]
+triggerall = PrevStateNo = [1000,2999]
+triggerall = numhelper(10100)=0
+triggerall = fvar(4)=1
+trigger1 = time = 2
+helpertype = normal
+name = "Super Cancel"
+ID = 10100
+stateno = 10100
+pos = 0,0
+postype = left
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 9999
+size.xscale = 1
+size.yscale = 1
+ignorehitpause = 1
+
+[State 3200, 9]
+type = Helper
+triggerall = stateno = [3000,4999]
+triggerall = PrevStateNo = [3000,4999]
+triggerall = numhelper(10105)=0
+triggerall = fvar(4)=1
+trigger1 = time = 2
+helpertype = normal
+name = "Dream Cancel"
+ID = 10105
+stateno = 10105
+pos = 0,0
+postype = left
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 9999
+size.xscale = 1
+size.yscale = 1
+ignorehitpause = 1
+
+[State -3,116]
+type = varset
+triggerall = stateno = [1000,4999]
+trigger1 = fvar(5)!=1
+trigger1 = movecontact
+fvar(5) = 1
+
+[State -3,116]
+type = varset
+triggerall = stateno = [1000,2999]
+trigger1 = fvar(7)!=1
+trigger1 = movecontact
+fvar(7) = 1
+
+[State -3,116]
+type = varset
+triggerall = stateno = [3000,4999]
+trigger1 = fvar(7)!=2
+trigger1 = movecontact
+fvar(7) = 2
+
+[State -3,116]
+type = varset
+triggerall = fvar(7)!=0
+trigger1 = fvar(14) = 0
+trigger1 = ctrl
+trigger2 = fvar(14) = 1
+trigger2 = fvar(1)
+fvar(7) = 0
+
+[State -3,116]
+type = varset
+triggerall = stateno = [3000,4999]
+trigger1 = fvar(7)=1
+fvar(5) = 0
+
+[State -3,116]
+type = varadd
+trigger1 = fvar(5) = 1
+fvar(6) = 1
+
+[State -3,116]
+type = varset
+triggerall = fvar(5) != 0
+trigger1 = fvar(6) >= 17
+fvar(5) = 0
+
+[State -3,116]
+type = varset
+triggerall = fvar(6) != 0
+trigger1 = fvar(5) = 0
+trigger2 = stateno = [3000,4999]
+trigger2 = time = 1
+fvar(6) = 0
+
+[State -3,116]
+type = AssertSpecial
+trigger1 = fvar(7) != 0
+flag = nojugglecheck
+;---------------------------------------------------------------------------------
+;????????????
+;=======================================
+;?????????
+;-----------------------
+[state -1]
+type = varadd
+triggerall = !ishelper
+triggerall = roundstate>1
+trigger1=var(12) > 0
+v=12
+value=1
+ignorehitpause=1
+;-----------------------
+[state -1]
+type = varset
+triggerall = !ishelper
+trigger1=var(12)%20=0
+v=12
+value=0
+ignorehitpause=1
+;-----------------------
+[state -1]
+type = varadd
+triggerall = !ishelper
+trigger1=var(13) > 0
+v=13
+value=1
+ignorehitpause=1
+;-----------------------
+;?????????
+;-----------------------
+[state -1]
+type = varset
+triggerall = !ishelper
+trigger1=var(13)%15=0
+v=13
+value=0
+ignorehitpause=1
+;-----------------------
+[state -1]
+type = varset
+triggerall = !ishelper
+trigger1=command= "623"
+trigger2=command= "421"
+v=14
+value=12
+ignorehitpause=1
+
+[state -1]
+type = varadd
+triggerall = !ishelper
+trigger1=var(14)>0
+v=14
+value=-1
+ignorehitpause=1
+
+[state -1]
+type = varset
+triggerall = !ishelper
+triggerall = time = [0,1]
+trigger1=stateno= [99150,99161]
+v=13
+value=0
+ignorehitpause=1
+
+;=======================================
+;?????
+;=======================================
+
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "2222"
+v=12
+value=921
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+triggerall = var(14) = 0
+trigger1 = var(10) = 0
+trigger1 = command= "26"
+v=12
+value=601
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "426"
+v=12
+value=ifelse((var(12)=[741,755]),941,641)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "623"
+v=12
+value=621
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "4264"
+v=12
+value=801
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "214236"
+v=12
+value=941
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "23623"
+v=12
+value=661
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "426426"
+v=12
+value=861
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "236236236"
+v=12
+value=681
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+triggerall = var(14) = 0
+trigger1 = var(10) = 0
+trigger1 = command= "24"
+v=12
+value=701
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "624"
+v=12
+value=ifelse((var(12)=[641,655]),961,741)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "421"
+v=12
+value=721
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "6246"
+v=12
+value=821
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "236214"
+v=12
+value=961
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "624624"
+v=12
+value=881
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "214214"
+v=12
+value=761
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+trigger1 = var(10) = 0
+trigger1 = command= "214214214214"
+v=12
+value=781
+ignorehitpause=1
+pausemovetime = 99
+
+;==================================================
+;??????????
+[state -1]
+type=varadd
+triggerall = !ishelper
+triggerall = fvar(3)<40
+trigger1 = command= "holdback"
+trigger2 = command= "holddown"
+fv=3
+value=1
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varadd
+triggerall = !ishelper
+triggerall = fvar(3)>0
+trigger1 = command!= "holdback"
+trigger1 = command!= "holddown"
+fv=3
+value=-1
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = !ishelper
+triggerall = fvar(3)>0
+trigger1 = command= "26"
+trigger2 = command= "24"
+trigger3 = command= "623"
+trigger4 = command= "421"
+fv=3
+value=0
+ignorehitpause=1
+pausemovetime = 99
+
+;46
+[state -1]
+type=varset
+trigger1 = fvar(3) >= 30
+trigger1 = command= "holdfwd"
+v=12
+value=1001
+ignorehitpause=1
+pausemovetime = 99
+
+;28
+[state -1]
+type=varset
+trigger1 = fvar(3) >= 30
+trigger1 = command= "holdup"
+v=12
+value=1021
+ignorehitpause=1
+pausemovetime = 99
+
+
+
+
+;46
+[state -1]
+type=varset
+trigger1 = fvar(3) >= 30
+trigger1 = command= "646"
+v=12
+value=1041
+ignorehitpause=1
+pausemovetime = 99
+;=======================================
+;???????
+;=======================================
+
+;===============================================
+[state -1]
+type=varset
+trigger1=command= "Avoid"
+v=13
+value=1
+ignorehitpause=1
+
+[state -1]
+type=varset
+triggerall=var(14)<=0
+trigger1=command= "C"
+trigger1=var(4)<=0
+v=13
+value=21
+ignorehitpause=1
+
+[state -1]
+type=varset
+triggerall=var(14)<=0
+trigger1=command= "D"
+trigger1=var(4)<=0
+v=13
+value=41
+ignorehitpause=1
+
+[state -1]
+type=varset
+triggerall = var(14)<=0
+triggerall = command != "Avoid"
+trigger1=command= "A"
+trigger1=var(4)<=0
+v=13
+value=61
+;ignorehitpause=1
+
+[state -1]
+type=varset 
+triggerall = var(14)<=0
+triggerall = command != "Avoid"
+trigger1=command= "B"
+trigger1=var(4)<=0
+v=13
+value=81
+ignorehitpause=1
+;=============================================================
+;?????????
+;--------------------------------------
+;26
+[state -1]
+type=varset
+triggerall = var(12) = [601,609]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",601,621)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [601,609]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",641,661)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;26(max)
+[state -1]
+type=varset
+triggerall = var(12) = [601,609]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2001,2021)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;26(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [601,609]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2041,2061)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;26(change)
+[state -1]
+type=varset
+triggerall = var(12) = [601,609]
+trigger1 = command= "A"
+trigger1 = command= "D"
+trigger2 = command= "B"
+trigger2 = command= "C"
+v=13
+value=ifelse((command= "A")&&(command= "D"),2781,2801)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;--------------------------------------
+;623
+[state -1]
+type=varset
+triggerall = var(12) = [621,631]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",681,701)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [621,631]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",721,741)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;623(max)
+[state -1]
+type=varset
+triggerall = var(12) = [621,631]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2201,2221)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;623(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [621,631]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2241,2261)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;426
+[state -1]
+type=varset
+triggerall = var(12) = [641,649]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",761,781)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [641,649]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",801,821)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;426(max)
+[state -1]
+type=varset
+triggerall = var(12) = [641,649]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2401,2421)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;426(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [641,649]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2441,2461)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;426(change)
+[state -1]
+type=varset
+triggerall = var(12) = [641,649]
+trigger1 = command= "A"
+trigger1 = command= "D"
+trigger2 = command= "B"
+trigger2 = command= "C"
+v=13
+value=ifelse((command= "A")&&(command= "D"),2821,2841)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;4264
+[state -1]
+type=varset
+triggerall = var(12) = [801,811]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",521,541)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [801,811]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",561,581)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;214236
+[state -1]
+type=varset
+triggerall = var(12) = [941,952]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",1621,1641)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [941,952]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",1661,1681)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;214236(max)
+[state -1]
+type=varset
+triggerall = var(12) = [941,952]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1701,1721)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;214236(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [941,952]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),1261,1281)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;2626
+[state -1]
+type=varset
+triggerall = var(12) = [661,672]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",841,861)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [661,672]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",881,901)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;2626(max)
+[state -1]
+type=varset
+triggerall = var(12) = [661,672]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1201,1221)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;2626(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [661,672]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),1301,1321)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;236236236
+[state -1]
+type=varset
+triggerall = var(12) = [681,692]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",921,941)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [681,692]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",961,981)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;426426
+[state -1]
+type=varset
+triggerall = var(12) = [681,692]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",1001,1021)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [681,692]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",1041,1061)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;426426(max)
+[state -1]
+type=varset
+triggerall = var(12) = [861,872]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1741,1761)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;426426(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [861,872]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),1421,1441)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;--------------------------------------
+;46
+[state -1]
+type=varset
+triggerall = var(12) = [1001,1006]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",1541,1561)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [1001,1006]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",1581,1601)
+ignorehitpause=1
+pausemovetime = 99
+;=============================================================
+
+;28
+[state -1]
+type=varset
+triggerall = var(12) = [1021,1026]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",1081,1101)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [1021,1026]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",1121,1141)
+ignorehitpause=1
+pausemovetime = 99
+;=============================================================
+
+;--------------------------------------
+;646
+[state -1]
+type=varset
+triggerall = var(12) = [1041,1049]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",2581,2601)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [1041,1049]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",2621,2641)
+ignorehitpause=1
+pausemovetime = 99
+;=============================================================
+
+;--------------------------------------
+;2222
+[state -1]
+type=varset
+triggerall = var(12) = [921,929]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",2661,2681)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [921,929]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",2701,2721)
+ignorehitpause=1
+pausemovetime = 99
+;=============================================================
+
+;?????????
+
+;--------------------------------------
+;24
+[state -1]
+type=varset
+triggerall = var(12) = [701,711]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",101,121)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [701,711]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",141,161)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;24(max)
+[state -1]
+type=varset
+triggerall = var(12) = [701,711]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2101,2121)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;24(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [701,711]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2141,2161)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;--------------------------------------
+;421
+[state -1]
+type=varset
+triggerall = var(12) = [721,731]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",181,201)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [721,731]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",221,241)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;421(max)
+[state -1]
+type=varset
+triggerall = var(12) = [721,731]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2301,2321)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;421(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [721,731]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2341,2361)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;624
+[state -1]
+type=varset
+triggerall = var(12) = [741,751]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",261,281)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [741,751]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",301,321)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;624(max)
+[state -1]
+type=varset
+triggerall = var(12) = [741,751]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),2501,2521)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;624(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [741,751]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),2541,2561)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;--------------------------------------
+;6246
+[state -1]
+type=varset
+triggerall = var(12) = [821,829]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",521,541)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [821,829]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",561,581)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;236214
+[state -1]
+type=varset
+triggerall = var(12) = [961,971]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",1821,1841)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [961,971]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",1861,1881)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;236214(max)
+[state -1]
+type=varset
+triggerall = var(12) = [961,971]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1901,1921)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;236214(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [961,971]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command= "c"),1341,1361)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;2424
+[state -1]
+type=varset
+triggerall = var(12) = [761,771]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",341,361)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [761,771]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",381,401)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;2424(max)
+[state -1]
+type=varset
+triggerall = var(12) = [761,771]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1501,1521)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;2424(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [761,771]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command="c"),1381,1401)
+ignorehitpause=1
+pausemovetime = 99
+;--------------------------------------
+;214214214
+[state -1]
+type=varset
+triggerall = var(12) = [781,791]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",421,441)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [781,791]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",461,481)
+ignorehitpause=1
+pausemovetime = 99
+
+;--------------------------------------
+;624624
+[state -1]
+type=varset
+triggerall = var(12) = [881,891]
+trigger1 = command= "A"
+trigger2 = command= "C"
+v=13
+value=ifelse(command="A",501,521)
+ignorehitpause=1
+pausemovetime = 99
+
+[state -1]
+type=varset
+triggerall = var(12) = [881,891]
+trigger1 = command= "B"
+trigger2 = command= "D"
+v=13
+value=ifelse(command="B",541,561)
+ignorehitpause=1
+pausemovetime = 99
+;-----------------------------------------------------------------------------------
+;624624(max)
+[state -1]
+type=varset
+triggerall = var(12) = [881,891]
+trigger1 = command= "dodge"
+trigger2 = command= "recovery"
+v=13
+value=ifelse((command= "dodge"),1941,1961)
+ignorehitpause=1
+pausemovetime = 99
+;-----------------------------------------------------------------------------------
+;624624(max2)
+[state -1]
+type=varset
+triggerall = var(12) = [881,891]
+trigger1 = command= "c"
+trigger2 = command= "z"
+v=13
+value=ifelse((command="c"),1461,1481)
+ignorehitpause=1
+pausemovetime = 99
+;-----------------------------------------------------------------------------------

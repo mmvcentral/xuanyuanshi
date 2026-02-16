@@ -1,0 +1,79 @@
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 =
+reversal.attr = S,NA           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pause,0
+sparkno = S1500
+hitsound = S1,0
+p1stateno =
+p2stateno =
+;ignorehitpause =
+;persistent =
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 =
+reversal.attr = S,NA           ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+pause,0
+sparkno = S1500
+hitsound = S1,0
+p1stateno =
+p2stateno =
+;ignorehitpause =
+;persistent =
+;===========================================================
+[Data]
+life = 1050
+attack = 85
+defence = 100
+fall.defence_up = 50
+liedown.time = 130
+airjuggle = 16
+sparkno = S735
+guard.sparkno = S736
+KO.echo = 0
+volume = 30
+power = 3000
+IntPersistIndex = e
+FloatPersistIndex = 23,29
+
+[Size]
+xscale = 1
+yscale = 1
+ground.back = 15
+ground.front = 15
+air.back = 12
+air.front = 12
+height = 60
+attack.dist = 140
+proj.attack.dist = 80
+proj.doscale = 1
+head.pos = 5,-85
+mid.pos = 5,-60
+shadowoffset = 0
+draw.offset = 0,0
+
+[Velocity]
+walk.fwd  = 2.6        ;Walk forward
+walk.back = -2.45       ;Walk backward
+run.fwd  = 4.9,0  
+run.back = -4.5,-6  
+jump.neu = 0,-9.7       ;Neutral jumping velocity (x, y)
+jump.back = -3.1       ;Jump back Speed (x, y)
+jump.fwd = 3.2         ;Jump forward Speed (x, y)
+runjump.back = -2.95,-9.7 
+runjump.fwd = 3.6,-9.7
+airjump.neu = 0,-7.5
+airjump.back = -2.55
+airjump.fwd = 2.5
+
+[Movement]
+airjump.num = 0
+airjump.height = 35
+yaccel = 0.45
+stand.friction = 0.8
+crouch.friction = 0.8
+
+[Quotes]
+victory1 = "Luckyly, I didn't get raped hard...."
+victory2 = "I came a dozen times to win this game, that's tough but worth..."
+;---------------------------------------------------------------------------
