@@ -257,17 +257,19 @@ A MUGEN character by **mast-chen** (mastchen). Version: 02/03/2005. Compatible w
 ### File Structure
 
 ```
-A-Shi/
-├── A-Shi.def          # Character definition
+xuanyuanshi/
+├── xuanyuanshi.def    # Character definition (load this in MUGEN)
 ├── A-Shi.cns          # Main CNS (large)
+├── A-Shi.air          # Animation definitions
 ├── A-Shi_Normal_Special.cns   # Normal/Special states
-├── A-Shi_Super.cns     # Super moves
+├── A-Shi_Super.cns    # Super moves
 ├── A-Shi_common-2.cns # Common states
 ├── hit.cns            # Hit detection
 ├── common-3.cns       # Common systems (AI, command buffer)
 ├── power_full_max.cns # Power/MAX states
 ├── command.cmd        # Command definitions
 ├── data.txt           # Data overrides
+├── show_menu.air      # Menu animation definitions
 ├── stroy.def          # Arcade intro
 ├── ending.def         # Arcade ending
 ├── command list/      # Command list (HTML)
@@ -276,6 +278,8 @@ A-Shi/
 ├── 18X Patch/         # 18X variant
 └── docs/              # Documentation
 ```
+
+*Note: The character loads `xuanyuanshi.def`; the def references `A-Shi.sff`, `A-Shi.snd`, and `A-Shi.air` for sprites, sound, and animations.*
 
 ### CNS Module Roles
 
@@ -337,4 +341,4 @@ A-Shi/
 
 ## Palette Defaults
 
-12 palettes (1–12). See `A-Shi.def` for palette file assignments.
+12 palettes (1–12). See `xuanyuanshi.def` for palette file assignments.
